@@ -87,7 +87,6 @@ public class Main {
                 employeeElements.clear();
             }
         }
-        System.out.println(employeeElements);
         return employeeList;
     }
 
