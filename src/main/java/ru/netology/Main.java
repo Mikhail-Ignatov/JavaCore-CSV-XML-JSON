@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Main {
 
-    public static List<Employee> parseCSV(String[] columnMapping, String fileName){
+    public static List<Employee> parseCSV(String[] columnMapping, String fileName) {
         try (CSVReader csvReader = new CSVReader(new FileReader(fileName))) {
             ColumnPositionMappingStrategy<Employee> strategy =
                     new ColumnPositionMappingStrategy<>();
@@ -38,13 +38,16 @@ public class Main {
         }
         return null;
     }
-    public static String listToJson(List<Employee> list){
+
+    public static String listToJson(List<Employee> list) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        Type listType = new TypeToken<List<Employee>>() {}.getType();
+        Type listType = new TypeToken<List<Employee>>() {
+        }.getType();
         return gson.toJson(list, listType);
     }
-    public static void writeString(String json, String jsonFileName){
+
+    public static void writeString(String json, String jsonFileName) {
         try (FileWriter file = new
                 FileWriter(jsonFileName)) {
             file.write(json);
@@ -69,9 +72,9 @@ public class Main {
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
             System.out.println("Teкyщий элeмeнт: " + node.getNodeName());
-            if (node.getNodeName().equals("employee")){
+            if (node.getNodeName().equals("employee")) {
                 NodeList nodeEmployeeList = node.getChildNodes();
-                for (int j = 0; j < nodeEmployeeList.getLength(); j++){
+                for (int j = 0; j < nodeEmployeeList.getLength(); j++) {
                     Node employeeNode = nodeEmployeeList.item(j);
                     if (Node.ELEMENT_NODE == employeeNode.getNodeType()) {
                         employeeElements.add(employeeNode.getTextContent());
@@ -89,7 +92,6 @@ public class Main {
         }
         return employeeList;
     }
-
 
 
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
